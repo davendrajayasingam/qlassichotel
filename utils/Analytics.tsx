@@ -2,7 +2,7 @@
 
 import { Analytics as VercelAnalytics } from '@vercel/analytics/react'
 
-import FathomAnalytics from '@/utils/components/FathomAnalytics'
+import FathomAnalytics from '@/utils/FathomAnalytics'
 
 export default function Analytics()
 {
