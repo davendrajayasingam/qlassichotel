@@ -1,5 +1,6 @@
 import '@/app/globals.css'
 import Header from '@/components/Header'
+import Analytics from '@/utils/Analytics'
 
 import { getSEO, getSiteData } from '@/sanity/sanity-utils'
 import type { Metadata } from 'next'
@@ -54,6 +55,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           phone={site.phone}
         />
         {children}
+        <Analytics />
       </body>
     </html>
   )
