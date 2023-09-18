@@ -12,16 +12,13 @@ import 'lightbox.js-react/dist/index.css'
 import { Playfair_Display, Poppins } from 'next/font/google'
 
 const playfairDisplay = Playfair_Display({
-  // this is a variable font
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-playfair-display'
 })
 
 const poppins = Poppins({
-  // https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-weight
-  // light, regular, medium, bold,
-  weight: ['300', '400', '500', '700'],
+  weight: ['100', '200', '300', '400', '500', '700', '800', '900'],
   style: ['normal', 'italic'],
   subsets: ['latin'],
   display: 'swap',
@@ -47,7 +44,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       lang='en'
       className={`${playfairDisplay.variable} ${poppins.variable}`}
     >
-      <body className='font-body text-slate-900'>
+      <body className='font-body text-stone-900 bg-stone-200'>
         <Header
           title={site.title}
           tagline={site.tagline}

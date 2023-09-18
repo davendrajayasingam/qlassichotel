@@ -64,7 +64,11 @@ export async function getHomepage(): Promise<Homepage>
 {
     return createClient(config).fetch(
         groq`*[_type == "homepage"][0]{
-            "bannerImage": bannerImage.asset->url,
+            "slides": slides[]{
+                title,
+                description,
+                "image": asset->url
+            },
             about,
             "rooms": {
                 "heading": rooms.heading,
@@ -74,6 +78,22 @@ export async function getHomepage(): Promise<Homepage>
                     shortName,
                     shortDescription,
                     "images": images[].asset->url
+                }
+            },
+            "amenities": {
+                "heading": amenities.heading,
+                "title": amenities.title,
+                "hotelAmenitiesTitle": amenities.hotelAmenitiesTitle,
+                "hotelAmenities": amenities.hotelAmenities[]->{
+                    name,
+                    description,
+                    "icon": icon.asset->url
+                },
+                "roomAmenitiesTitle": amenities.roomAmenitiesTitle,
+                "roomAmenities": amenities.roomAmenities[]->{
+                    name,
+                    description,
+                    "icon": icon.asset->url
                 }
             }
         }`

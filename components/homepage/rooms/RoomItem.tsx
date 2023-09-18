@@ -1,8 +1,8 @@
 import { PortableText } from '@portabletext/react'
 import Image from 'next/image'
-import Slider from 'react-slick'
-import { useState } from 'react'
-import { SlideshowLightbox } from 'lightbox.js-react'
+import Slider, { Settings } from 'react-slick'
+import { useEffect, useState } from 'react'
+import { SlideshowLightbox, initLightboxJS } from 'lightbox.js-react'
 
 import { portableTextComponents } from '@/sanity/config/portable-text-config'
 import { Room } from '@/types/Room'
@@ -13,16 +13,20 @@ type Props = {
     index: number
 }
 
-const sliderSettings = {
+const sliderSettings: Settings = {
     dots: true,
     infinite: true,
-    speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1
 }
 
 export default function RoomItem({ room, index }: Props) 
 {
+    useEffect(() =>
+    {
+        initLightboxJS(process.env.NEXT_PUBLIC_LIGHTBOX_JS_LICENSE_KEY!, 'individual')
+    }, [])
+
     const images = room.images.map(image => ({
         src: image,
         alt: room.name
@@ -44,7 +48,7 @@ export default function RoomItem({ room, index }: Props)
             )}>
                 <div className='border-2 border-stone-600 px-4 py-8 flex flex-col items-center space-y-4'>
                     <p
-                        className='font-light text-stone-600 tracking-widest whitespace-nowrap rotate-180'
+                        className='font-bold text-stone-600 tracking-widest whitespace-nowrap rotate-180 uppercase'
                         style={{ writingMode: 'vertical-rl' }}
                     >
                         {room.shortName}

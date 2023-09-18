@@ -10,3 +10,15 @@ type Site = {
     email: string
     phone: string
 }
+
+type Amenity = {
+    name: string
+    description: string
+    icon: string
+}
+
+type Slide = {
+    title: string
+    description: string
+    image: string
+}

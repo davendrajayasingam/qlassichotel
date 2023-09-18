@@ -4,35 +4,21 @@ const homepage = {
     type: 'document',
     fields: [
         {
-            name: 'bannerImage',
-            title: 'Banner Image',
-            type: 'image'
-        },
-        {
-            title: 'About Us',
-            name: 'about',
-            type: 'object',
-            fields: [
-                {
-                    name: 'heading',
-                    title: 'Heading',
-                    type: 'string'
-                },
-                {
+            name: 'slides',
+            title: 'Slides',
+            type: 'array',
+            of: [{
+                type: 'image',
+                fields: [{
                     name: 'title',
                     title: 'Title',
                     type: 'string'
-                },
-                {
-                    name: 'description',
-                    title: 'Description',
-                    type: 'array', of: [{ type: 'block' }]
-                }
-            ]
+                }]
+            }]
         },
         {
-            title: 'Our Rooms',
             name: 'rooms',
+            title: 'Our Rooms',
             type: 'object',
             fields: [
                 {
@@ -50,6 +36,67 @@ const homepage = {
                     title: 'Rooms',
                     type: 'array',
                     of: [{ type: 'reference', to: [{ type: 'room' }] }]
+                }
+            ]
+        },
+        {
+            name: 'amenities',
+            title: 'Amenities',
+            type: 'object',
+            fields: [
+                {
+                    name: 'heading',
+                    title: 'Heading',
+                    type: 'string'
+                },
+                {
+                    name: 'title',
+                    title: 'Title',
+                    type: 'string'
+                },
+                {
+                    name: 'hotelAmenitiesTitle',
+                    title: 'Hotel Amenities Title',
+                    type: 'string'
+                },
+                {
+                    name: 'hotelAmenities',
+                    title: 'Hotel Amenities',
+                    type: 'array',
+                    of: [{ type: 'reference', to: [{ type: 'hotelAmenity' }] }]
+                },
+                {
+                    name: 'roomAmenitiesTitle',
+                    title: 'Room Amenities Title',
+                    type: 'string'
+                },
+                {
+                    name: 'roomAmenities',
+                    title: 'Room Amenities',
+                    type: 'array',
+                    of: [{ type: 'reference', to: [{ type: 'roomAmenity' }] }]
+                }
+            ]
+        },
+        {
+            name: 'about',
+            title: 'About Us',
+            type: 'object',
+            fields: [
+                {
+                    name: 'heading',
+                    title: 'Heading',
+                    type: 'string'
+                },
+                {
+                    name: 'title',
+                    title: 'Title',
+                    type: 'string'
+                },
+                {
+                    name: 'description',
+                    title: 'Description',
+                    type: 'array', of: [{ type: 'block' }]
                 }
             ]
         }
