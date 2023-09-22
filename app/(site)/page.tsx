@@ -1,14 +1,29 @@
-import { getHomepage } from '@/sanity/sanity-utils'
+import { getContact, getHomepage, getSEO } from '@/sanity/sanity-utils'
 import AboutUs from '@/components/homepage/AboutUs'
 import OurRooms from '@/components/homepage/rooms/OurRooms'
 import Amenities from '@/components/homepage/Amenities'
 import Slides from '@/components/homepage/Slides'
+import Contact from '@/components/homepage/Contact'
+
+import type { Metadata } from 'next'
+export async function generateMetadata()
+{
+  const seo = await getSEO('homepage')
+  return {
+    title: seo.title,
+    description: seo.description,
+    keywords: seo.keywords
+  } as Metadata
+}
 
 export const revalidate = 0
 
-export default async function Home()
+export default async function HomePage()
 {
-  const homepage = await getHomepage()
+  const [homepage, contact] = await Promise.all([
+    getHomepage(),
+    getContact()
+  ])
 
   return (
     <main>
@@ -27,6 +42,7 @@ export default async function Home()
       <Amenities
         heading={homepage.amenities.heading}
         title={homepage.amenities.title}
+        buttonText={homepage.amenities.buttonText}
         hotelAmenitiesTitle={homepage.amenities.hotelAmenitiesTitle}
         hotelAmenities={homepage.amenities.hotelAmenities}
         roomAmenitiesTitle={homepage.amenities.roomAmenitiesTitle}
@@ -38,6 +54,11 @@ export default async function Home()
         heading={homepage.about.heading}
         title={homepage.about.title}
         description={homepage.about.description}
+      />
+
+      {/* Contact */}
+      <Contact
+        address={contact.address}
       />
 
     </main>

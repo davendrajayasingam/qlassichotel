@@ -1,7 +1,8 @@
 'use client'
 
-import Image from 'next/image'
 import Slider, { Settings } from 'react-slick'
+
+import Hero from '@/components/Hero'
 
 type Props = {
     slides: Slide[]
@@ -21,33 +22,11 @@ export default function Slides({ slides }: Props)
 {
     return <section className='bg-stone-100'>
         <Slider {...sliderSettings}>
-            {
-                slides.map(slide => <div
-                    key={slide.title}
-                    className='relative w-screen h-auto aspect-square sm:aspect-video md:aspect-[2/1]'
-                >
-
-                    <Image
-                        src={slide.image}
-                        alt={slide.title}
-                        fill
-                        className='object-cover object-center'
-                    />
-
-                    {
-                        slide.title
-                        && <div className='absolute inset-0 flex flex-col items-center justify-center p-4'>
-                            <h1
-                                className='font-title font-bold text-5xl md:text-7xl text-stone-100 text-center shadow-black drop-shadow-md max-w-xl'
-                                style={{ textShadow: '2px 2px 0 #000' }}
-                            >
-                                {slide.title}
-                            </h1>
-                        </div>
-                    }
-
-                </div>)
-            }
+            {slides.map(slide => <Hero
+                key={slide.title}
+                image={slide.image}
+                title={slide.title}
+            />)}
         </Slider>
     </section>
 }

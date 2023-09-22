@@ -16,11 +16,11 @@ export default function OurRooms({ heading, title, rooms }: Props)
 
         <div className='px-4 pt-16 max-w-screen-md mx-auto'>
 
-            <h6 className='pb-4 font-medium text-sm tracking-[0.75em] text-stone-400 text-center'>
+            <h6 className='pb-8 font-medium text-sm tracking-[0.75em] text-stone-400 text-center'>
                 {heading}
             </h6>
 
-            <h1 className='font-title font-bold text-7xl text-stone-900 text-center'>
+            <h1 className='font-title font-bold text-5xl md:text-7xl text-stone-900 text-center'>
                 {title}
             </h1>
 

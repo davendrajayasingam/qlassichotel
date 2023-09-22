@@ -1,9 +1,10 @@
+import { Toaster } from 'react-hot-toast'
+
 import '@/app/globals.css'
 import Header from '@/components/Header'
 import Analytics from '@/utils/Analytics'
 
-import { getSEO, getSiteData } from '@/sanity/sanity-utils'
-import type { Metadata } from 'next'
+import { getContact, getSiteData } from '@/sanity/sanity-utils'
 
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
@@ -25,19 +26,12 @@ const poppins = Poppins({
   variable: '--font-poppins'
 })
 
-export async function generateMetadata({ params }: { params: { slug: string } })
-{
-  const seo = await getSEO('homepage')
-  return {
-    title: seo.title,
-    description: seo.description,
-    keywords: seo.keywords
-  } as Metadata
-}
-
 export default async function RootLayout({ children }: { children: React.ReactNode }) 
 {
-  const site = await getSiteData()
+  const [site, contact] = await Promise.all([
+    getSiteData(),
+    getContact()
+  ])
 
   return (
     <html
@@ -48,11 +42,15 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <Header
           title={site.title}
           tagline={site.tagline}
-          email={site.email}
-          phone={site.phone}
+          email={contact.email}
+          phone={contact.phone}
+          nav={site.headerNavigation}
         />
-        {children}
+        <div className='mt-36 lg:mt-40'>
+          {children}
+        </div>
         <Analytics />
+        <Toaster />
       </body>
     </html>
   )

@@ -14,14 +14,24 @@ const site = {
             type: 'string'
         },
         {
-            name: 'email',
-            title: 'Email',
-            type: 'string'
-        },
-        {
-            name: 'phone',
-            title: 'Phone',
-            type: 'string'
+            name: 'headerNavigation',
+            title: 'Header Navigation',
+            type: 'array',
+            of: [{
+                type: 'object',
+                fields: [
+                    {
+                        name: 'title',
+                        title: 'Title',
+                        type: 'string'
+                    },
+                    {
+                        name: 'link',
+                        title: 'Link',
+                        type: 'string'
+                    }
+                ]
+            }]
         }
     ]
 }

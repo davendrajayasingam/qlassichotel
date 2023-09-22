@@ -14,6 +14,12 @@ const room = {
             type: 'string'
         },
         {
+            name: 'slug',
+            title: 'Slug (DO NOT EDIT)',
+            type: 'slug',
+            options: { source: 'name' }
+        },
+        {
             name: 'shortName',
             title: 'Short Name',
             type: 'string'

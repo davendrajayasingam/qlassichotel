@@ -55,6 +55,11 @@ const homepage = {
                     type: 'string'
                 },
                 {
+                    name: 'buttonText',
+                    title: 'Button Text',
+                    type: 'string'
+                },
+                {
                     name: 'hotelAmenitiesTitle',
                     title: 'Hotel Amenities Title',
                     type: 'string'

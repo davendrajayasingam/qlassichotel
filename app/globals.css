@@ -2,7 +2,121 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Slick Slider */
+/* This directly edits the slick slider css */
 .slick-prev:before,
 .slick-next:before {
   color: #292524 !important;
+}
+.slick-dots li button:before {
+  font-size: 12px !important;
+  line-height: 12px !important;
+}
+
+/* Underline Hover Animation */
+/* Source: https://www.w3resource.com/html-css-exercise/html-css-practical-exercises/html-css-practical-exercise-15.php */
+.custom-underline-hover-animation {
+  position: relative;
+}
+
+.custom-underline-hover-animation:hover {
+  color: #fbbf24;
+}
+
+.custom-underline-hover-animation:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #fbbf24;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.custom-underline-hover-animation:hover:after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+/* Logo */
+.custom-logo-title::first-letter {
+  color: #fbbf24;
+}
+
+/* Hamburger Icon */
+/* Source: https://codepen.io/designcouch/pen/ExvwPY */
+#custom-hamburger-icon {
+  width: 40px;
+  height: 25px;
+  position: relative;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: 0.5s ease-in-out;
+  -moz-transition: 0.5s ease-in-out;
+  -o-transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
+  cursor: pointer;
+}
+
+#custom-hamburger-icon span {
+  display: block;
+  position: absolute;
+  height: 5px;
+  width: 100%;
+  background: #fbbf24;
+  border-radius: 9px;
+  opacity: 1;
+  left: 0;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: 0.25s ease-in-out;
+  -moz-transition: 0.25s ease-in-out;
+  -o-transition: 0.25s ease-in-out;
+  transition: 0.25s ease-in-out;
+}
+
+#custom-hamburger-icon span:nth-child(1) {
+  top: 0px;
+}
+
+#custom-hamburger-icon span:nth-child(2),
+#custom-hamburger-icon span:nth-child(3) {
+  top: 10px;
+}
+
+#custom-hamburger-icon span:nth-child(4) {
+  top: 20px;
+}
+
+#custom-hamburger-icon.open span:nth-child(1) {
+  top: 10px;
+  width: 0%;
+  left: 50%;
+}
+
+#custom-hamburger-icon.open span:nth-child(2) {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+#custom-hamburger-icon.open span:nth-child(3) {
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+#custom-hamburger-icon.open span:nth-child(4) {
+  top: 10px;
+  width: 0%;
+  left: 50%;
 }

@@ -7,6 +7,7 @@ import { SlideshowLightbox, initLightboxJS } from 'lightbox.js-react'
 import { portableTextComponents } from '@/sanity/config/portable-text-config'
 import { Room } from '@/types/Room'
 import { classNames } from '@/utils/tailwindHelper'
+import Link from 'next/link'
 
 type Props = {
     room: Room
@@ -35,10 +36,10 @@ export default function RoomItem({ room, index }: Props)
     const [isOpen, setIsOpen] = useState(false)
 
     return <div className={classNames(
-        'px-4 py-16',
+        'px-4 py-8 md:py-16',
         index % 2 === 0 ? 'bg-stone-100' : 'bg-stone-200',
     )}>
-        <div className='grid grid-cols-1 lg:grid-cols-6 gap-8 max-w-screen-xl mx-auto'>
+        <div className='grid grid-cols-1 lg:grid-cols-6 lg:gap-8 max-w-screen-xl mx-auto'>
 
             {/* Order & Shortname */}
             <div className={classNames(
@@ -46,24 +47,32 @@ export default function RoomItem({ room, index }: Props)
                 index % 2 === 0 ? 'order-1' : 'order-3',
                 'py-6 flex-col items-center'
             )}>
-                <div className='border-2 border-stone-600 px-4 py-8 flex flex-col items-center space-y-4'>
+                <div className='border-2 border-stone-800 px-4 py-8 flex flex-col items-center space-y-4'>
                     <p
-                        className='font-bold text-stone-600 tracking-widest whitespace-nowrap rotate-180 uppercase'
+                        className='font-bold text-stone-800 tracking-widest whitespace-nowrap rotate-180 uppercase'
                         style={{ writingMode: 'vertical-rl' }}
                     >
                         {room.shortName}
                     </p>
-                    <p className='font-bold text-stone-600'>{`0${index + 1}`.slice(-2)}</p>
+                    <p className='font-bold text-stone-800'>{`0${index + 1}`.slice(-2)}</p>
                 </div>
             </div>
 
             {/* Room Description */}
-            <div className='col-span-2 order-2 p-6 text-center lg:text-left'>
+            <div className='col-span-2 order-2 px-6 lg:p-6 text-center lg:text-left'>
                 <h1 className='mb-6 font-title font-bold text-4xl text-stone-800 leading-relaxed'>{room.name}</h1>
                 <PortableText
                     value={room.shortDescription}
                     components={portableTextComponents}
                 />
+                <div className='pt-6'>
+                    <Link
+                        href={`/rooms/${room.slug}`}
+                        className='bg-amber-400 text-stone-900 px-8 py-3 rounded-full font-semibold text-lg hover:brightness-110 transition-all duration-500 ease-in-out'
+                    >
+                        View {room.shortName}
+                    </Link>
+                </div>
             </div>
 
             {/* Image Slider */}
@@ -76,7 +85,7 @@ export default function RoomItem({ room, index }: Props)
                     {room.images.map(image => (
                         <button
                             key={image}
-                            className='relative bg-stone-100 aspect-[3/2] w-full h-full outline-none focus:outline-none'
+                            className='mb-2 relative bg-stone-100 aspect-[3/2] w-full h-full outline-none focus:outline-none'
                             onClick={() => setIsOpen(true)}
                         >
                             <Image

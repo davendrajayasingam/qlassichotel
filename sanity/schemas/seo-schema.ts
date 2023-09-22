@@ -5,9 +5,8 @@ const metadata = {
     fields: [
         {
             name: 'slug',
-            title: 'Slug (DO NOT CHANGE THIS - THE WEBSITE WILL BREAK)',
-            type: 'slug',
-            options: { source: 'siteName' }
+            title: 'Slug (DO NOT EDIT)',
+            type: 'slug'
         },
         {
             name: 'title',

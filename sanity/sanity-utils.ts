@@ -54,8 +54,10 @@ export async function getSiteData(): Promise<Site>
         groq`*[_type == "site"][0]{
             title,
             tagline,
-            email,
-            phone
+            "headerNavigation": headerNavigation[]{
+                title,
+                link
+            }
         }`
     )
 }
@@ -75,6 +77,7 @@ export async function getHomepage(): Promise<Homepage>
                 "title": rooms.title,
                 "rooms": rooms.rooms[]->{
                     name,
+                    "slug": slug.current,
                     shortName,
                     shortDescription,
                     "images": images[].asset->url
@@ -83,6 +86,7 @@ export async function getHomepage(): Promise<Homepage>
             "amenities": {
                 "heading": amenities.heading,
                 "title": amenities.title,
+                "buttonText": amenities.buttonText,
                 "hotelAmenitiesTitle": amenities.hotelAmenitiesTitle,
                 "hotelAmenities": amenities.hotelAmenities[]->{
                     name,
@@ -106,10 +110,31 @@ export async function getRooms(): Promise<Room[]>
         // map each image to its url
         groq`*[_type == "room"] | order(order asc){
             name,
+            "slug": slug.current,
             shortName,
             description,
             shortDescription,
             "images": images[].asset->url
+        }`
+    )
+}
+
+export async function getContact(): Promise<Contact>
+{
+    return createClient(config).fetch(
+        groq`*[_type == "contact"][0]{
+            "heroImage": heroImage.asset->url,
+            heroImageTitle,
+            title,
+            description,
+            emailTitle,
+            email,
+            phoneTitle,
+            phone,
+            addressTitle,
+            address,
+            contactFormTitle,
+            contactFormDescription
         }`
     )
 }
