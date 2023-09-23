@@ -117,6 +117,54 @@ export async function getRoomsPage(): Promise<RoomsPage>
     )
 }
 
+export async function getAmenitiesPage(): Promise<AmenitiesPage>
+{
+    return createClient(config).fetch(
+        groq`*[_type == "amenities"][0]{
+            "heroImage": heroImage.asset->url,
+            heroImageTitle,
+            title,
+            description,
+            hotelAmenitiesTitle,
+            roomAmenitiesTitle
+        }`
+    )
+}
+
+export async function getHotelAmenities(): Promise<Amenity[]>
+{
+    return createClient(config).fetch(
+        groq`*[_type == "hotelAmenity"]{
+            name,
+            description,
+            "icon": icon.asset->url
+        }`
+    )
+}
+
+export async function getRoomAmenities(): Promise<Amenity[]>
+{
+    return createClient(config).fetch(
+        groq`*[_type == "roomAmenity"]{
+            name,
+            description,
+            "icon": icon.asset->url
+        }`
+    )
+}
+
+export async function getBookingPage(): Promise<BookingPage>
+{
+    return createClient(config).fetch(
+        groq`*[_type == "booking"][0]{
+            "heroImage": heroImage.asset->url,
+            heroImageTitle,
+            title,
+            description
+        }`
+    )
+}
+
 export async function getGalleryPage(): Promise<GalleryPage>
 {
     return createClient(config).fetch(

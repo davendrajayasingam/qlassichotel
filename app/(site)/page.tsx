@@ -6,6 +6,7 @@ import Slides from '@/components/homepage/Slides'
 import Contact from '@/components/homepage/Contact'
 
 import type { Metadata } from 'next'
+import GoogleMaps from '@/components/homepage/GoogleMaps'
 export async function generateMetadata()
 {
   const seo = await getSEO('homepage')
@@ -57,7 +58,8 @@ export default async function HomePage()
       />
 
       {/* Contact */}
-      <Contact address={contact.address} />
+      {/* <Contact address={contact.address} /> */}
+      <GoogleMaps address={contact.address} />
 
     </main>
   )

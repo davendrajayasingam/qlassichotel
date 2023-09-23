@@ -1,4 +1,6 @@
 import aboutUs from './about-us-schema'
+import amenities from './amenities-schema'
+import booking from './booking-schema'
 import contact from './contact-schema'
 import gallery from './gallery-schema'
 import homepage from './homepage-schema'
@@ -13,9 +15,11 @@ const schemas = [
     site,
     homepage,
     room,
+    ourRooms,
+    amenities,
     hotelAmenity,
     roomAmenity,
-    ourRooms,
+    booking,
     gallery,
     aboutUs,
     contact,

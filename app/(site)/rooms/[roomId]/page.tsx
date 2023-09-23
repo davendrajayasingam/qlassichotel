@@ -1,8 +1,4 @@
-import { getRoom, getSEO } from '@/sanity/sanity-utils'
-import Hero from '@/components/Hero'
-import MediumContainer from '@/app/(ui)/containers/MediumContainer'
-import Text from '@/app/(ui)/Text'
-import Title from '@/app/(ui)/Title'
+import { getRoom } from '@/sanity/sanity-utils'
 
 type Props = {
     params: { roomId: string }

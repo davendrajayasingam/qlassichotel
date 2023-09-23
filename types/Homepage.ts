@@ -6,7 +6,7 @@ export type Homepage = {
     about: {
         heading: string
         title: string
-        description: PortableTextBlock[]
+        description: string
     },
     rooms: {
         heading: string

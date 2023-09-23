@@ -34,6 +34,22 @@ type RoomsPage = {
     description: string
 }
 
+type AmenitiesPage = {
+    heroImage: string
+    heroImageTitle: string
+    title: string
+    description: string
+    hotelAmenitiesTitle: string
+    roomAmenitiesTitle: string
+}
+
+type BookingPage = {
+    heroImage: string
+    heroImageTitle: string
+    title: string
+    description: string
+}
+
 type GalleryPage = {
     heroImage: string
     heroImageTitle: string

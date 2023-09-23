@@ -1,14 +1,11 @@
 'use client'
 
-import { PortableText } from '@portabletext/react'
-import { PortableTextBlock } from 'sanity'
-
-import { portableTextComponents } from '@/sanity/config/portable-text-config'
+import Text from '@/app/(ui)/Text'
 
 type Props = {
     heading: string
     title: string
-    description: PortableTextBlock[]
+    description: string
 }
 
 export default function AboutUs({ heading, title, description }: Props)
@@ -24,10 +21,9 @@ export default function AboutUs({ heading, title, description }: Props)
                 {title}
             </h1>
 
-            <PortableText
-                value={description}
-                components={portableTextComponents}
-            />
+            <Text>
+                {description}
+            </Text>
 
         </div>
     </section>
