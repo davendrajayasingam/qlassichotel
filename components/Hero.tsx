@@ -9,7 +9,6 @@ type Props = {
 
 export default function Hero({ image, title }: Props)
 {
-    console.log('Hero:', image, title)
     return <section className='bg-stone-100'>
 
         <div className='relative w-screen h-auto aspect-square sm:aspect-video md:aspect-[2/0.85]'>

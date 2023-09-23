@@ -32,6 +32,11 @@ const site = {
                     }
                 ]
             }]
+        },
+        {
+            name: 'copyright',
+            title: 'Copyright',
+            type: 'string'
         }
     ]
 }

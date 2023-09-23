@@ -57,7 +57,8 @@ export async function getSiteData(): Promise<Site>
             "headerNavigation": headerNavigation[]{
                 title,
                 link
-            }
+            },
+            copyright
         }`
     )
 }
@@ -119,7 +120,37 @@ export async function getRooms(): Promise<Room[]>
     )
 }
 
-export async function getContact(): Promise<Contact>
+export async function getGalleryPage(): Promise<GalleryPage>
+{
+    return createClient(config).fetch(
+        groq`*[_type == "gallery"][0]{
+            "heroImage": heroImage.asset->url,
+            heroImageTitle,
+            title,
+            description,
+            hotelTabTitle,
+            "hotelImages": hotelImages[].asset->url,
+            roomTabTitle,
+            "roomImages": roomImages[].asset->url
+        }`
+    )
+}
+
+export async function getAboutPage(): Promise<AboutPage>
+{
+    return createClient(config).fetch(
+        groq`*[_type == "aboutUs"][0]{
+            "heroImage": heroImage.asset->url,
+            heroImageTitle,
+            title,
+            shortDescription,
+            "hotelImage": hotelImage.asset->url,
+            longDescription
+        }`
+    )
+}
+
+export async function getContactPage(): Promise<ContactPage>
 {
     return createClient(config).fetch(
         groq`*[_type == "contact"][0]{

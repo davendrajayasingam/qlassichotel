@@ -4,13 +4,14 @@ import '@/app/globals.css'
 import Header from '@/components/Header'
 import Analytics from '@/utils/Analytics'
 
-import { getContact, getSiteData } from '@/sanity/sanity-utils'
+import { getContactPage, getSiteData } from '@/sanity/sanity-utils'
 
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import 'lightbox.js-react/dist/index.css'
 
 import { Playfair_Display, Poppins } from 'next/font/google'
+import Footer from '@/components/Footer'
 
 const playfairDisplay = Playfair_Display({
   subsets: ['latin'],
@@ -30,7 +31,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 {
   const [site, contact] = await Promise.all([
     getSiteData(),
-    getContact()
+    getContactPage()
   ])
 
   return (
@@ -49,6 +50,10 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <div className='mt-36 lg:mt-40'>
           {children}
         </div>
+        <Footer
+          siteTitle={site.title}
+          copyright={site.copyright}
+        />
         <Analytics />
         <Toaster />
       </body>

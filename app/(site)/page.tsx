@@ -1,4 +1,4 @@
-import { getContact, getHomepage, getSEO } from '@/sanity/sanity-utils'
+import { getContactPage, getHomepage, getSEO } from '@/sanity/sanity-utils'
 import AboutUs from '@/components/homepage/AboutUs'
 import OurRooms from '@/components/homepage/rooms/OurRooms'
 import Amenities from '@/components/homepage/Amenities'
@@ -22,7 +22,7 @@ export default async function HomePage()
 {
   const [homepage, contact] = await Promise.all([
     getHomepage(),
-    getContact()
+    getContactPage()
   ])
 
   return (
