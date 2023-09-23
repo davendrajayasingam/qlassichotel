@@ -24,8 +24,14 @@ type Amenity = {
 
 type Slide = {
     title: string
-    description: string
     image: string
+}
+
+type RoomsPage = {
+    heroImage: string
+    heroImageTitle: string
+    title: string
+    description: string
 }
 
 type GalleryPage = {
@@ -37,6 +43,15 @@ type GalleryPage = {
     hotelImages: string[]
     roomTabTitle: string
     roomImages: string[]
+}
+
+type AboutPage = {
+    heroImage: string,
+    heroImageTitle: string,
+    title: string,
+    shortDescription: string,
+    hotelImage: string,
+    longDescription: string
 }
 
 type ContactPage = {
@@ -52,13 +67,4 @@ type ContactPage = {
     address: string,
     contactFormTitle: string,
     contactFormDescription: string
-}
-
-type AboutPage = {
-    heroImage: string,
-    heroImageTitle: string,
-    title: string,
-    shortDescription: string,
-    hotelImage: string,
-    longDescription: string
 }

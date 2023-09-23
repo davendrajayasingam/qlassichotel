@@ -1,7 +1,7 @@
 'use client'
 
 import { Room } from '@/types/Room'
-import RoomItem from './RoomItem'
+import RoomRow from '../../../app/(site)/rooms/RoomRow'
 
 type Props = {
     heading: string
@@ -26,7 +26,7 @@ export default function OurRooms({ heading, title, rooms }: Props)
 
         </div>
 
-        {rooms.map((room, idx) => <RoomItem
+        {rooms.map((room, idx) => <RoomRow
             key={room.name}
             room={room}
             index={idx}

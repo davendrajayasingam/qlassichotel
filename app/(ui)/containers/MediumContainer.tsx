@@ -21,8 +21,8 @@ export default function MediumContainer({
         )}
         style={style}
     >
-        <div className='px-4 py-16 max-w-screen-md mx-auto space-y-16'>
+        <section className='px-4 py-16 max-w-screen-md mx-auto space-y-16'>
             {children}
-        </div>
+        </section>
     </div>
 }

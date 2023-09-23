@@ -1,13 +1,15 @@
-import { PortableText } from '@portabletext/react'
+'use client'
+
+import Link from 'next/link'
 import Image from 'next/image'
 import Slider, { Settings } from 'react-slick'
 import { useEffect, useState } from 'react'
 import { SlideshowLightbox, initLightboxJS } from 'lightbox.js-react'
 
-import { portableTextComponents } from '@/sanity/config/portable-text-config'
 import { Room } from '@/types/Room'
 import { classNames } from '@/utils/tailwindHelper'
-import Link from 'next/link'
+import Text from '@/app/(ui)/Text'
+import SmallerTitle from '@/app/(ui)/SmallerTitle'
 
 type Props = {
     room: Room
@@ -21,7 +23,7 @@ const sliderSettings: Settings = {
     slidesToScroll: 1
 }
 
-export default function RoomItem({ room, index }: Props) 
+export default function RoomRow({ room, index }: Props) 
 {
     useEffect(() =>
     {
@@ -59,12 +61,13 @@ export default function RoomItem({ room, index }: Props)
             </div>
 
             {/* Room Description */}
-            <div className='col-span-2 order-2 px-6 lg:p-6 text-center lg:text-left'>
-                <h1 className='mb-6 font-title font-bold text-4xl text-stone-800 leading-relaxed'>{room.name}</h1>
-                <PortableText
-                    value={room.shortDescription}
-                    components={portableTextComponents}
-                />
+            <div className='col-span-2 order-2 px-6 lg:p-6 text-center lg:text-left space-y-6'>
+                <SmallerTitle>
+                    {room.name}
+                </SmallerTitle>
+                <Text>
+                    {room.shortDescription}
+                </Text>
                 <div className='pt-6'>
                     <Link
                         href={`/rooms/${room.slug}`}

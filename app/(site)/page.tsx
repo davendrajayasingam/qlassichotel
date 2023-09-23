@@ -57,9 +57,7 @@ export default async function HomePage()
       />
 
       {/* Contact */}
-      <Contact
-        address={contact.address}
-      />
+      <Contact address={contact.address} />
 
     </main>
   )

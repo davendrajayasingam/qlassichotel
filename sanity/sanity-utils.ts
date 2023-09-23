@@ -1,40 +1,8 @@
 import { createClient, groq } from 'next-sanity'
 
-import { Project } from '@/types/Project'
 import config from '@/sanity/config/client-config'
 import { Homepage } from '@/types/Homepage'
 import { Room } from '@/types/Room'
-
-export async function getProjects(): Promise<Project[]>
-{
-    return createClient(config).fetch(
-        groq`*[_type == "project"]{
-            _id,
-            _createdAt,
-            name,
-            "slug": slug.current,
-            "image": image.asset->url,
-            url,
-            content
-        }`
-    )
-}
-
-export async function getProject(slug: string): Promise<Project>
-{
-    return createClient(config).fetch(
-        groq`*[_type == "project" && slug.current == $slug][0]{
-            _id,
-            _createdAt,
-            name,
-            "slug": slug.current,
-            "image": image.asset->url,
-            url,
-            content
-        }`,
-        { slug }
-    )
-}
 
 export async function getSEO(slug: string): Promise<SEO>
 {
@@ -105,6 +73,23 @@ export async function getHomepage(): Promise<Homepage>
     )
 }
 
+export async function getRoom(slug: string): Promise<Room>
+{
+    return createClient(config).fetch(
+        // map each image to its url
+        groq`*[_type == "room" && slug.current == $slug][0]{
+            order,
+            name,
+            "slug": slug.current,
+            shortName,
+            description,
+            shortDescription,
+            "images": images[].asset->url
+        }`,
+        { slug }
+    )
+}
+
 export async function getRooms(): Promise<Room[]>
 {
     return createClient(config).fetch(
@@ -116,6 +101,18 @@ export async function getRooms(): Promise<Room[]>
             description,
             shortDescription,
             "images": images[].asset->url
+        }`
+    )
+}
+
+export async function getRoomsPage(): Promise<RoomsPage>
+{
+    return createClient(config).fetch(
+        groq`*[_type == "ourRooms"][0]{
+            "heroImage": heroImage.asset->url,
+            heroImageTitle,
+            title,
+            description
         }`
     )
 }

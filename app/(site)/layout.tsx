@@ -39,7 +39,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       lang='en'
       className={`${playfairDisplay.variable} ${poppins.variable}`}
     >
-      <body className='font-body text-stone-900 bg-stone-200'>
+      <body className='font-body text-stone-900 bg-stone-900'>
         <Header
           title={site.title}
           tagline={site.tagline}

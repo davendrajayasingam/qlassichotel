@@ -6,6 +6,6 @@ export type Room = {
     slug: string,
     shortName: string,
     description: PortableTextBlock[],
-    shortDescription: PortableTextBlock[],
+    shortDescription: string,
     images: string[]
 }

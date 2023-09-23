@@ -25,14 +25,13 @@ const room = {
             type: 'string'
         },
         {
-            name: 'description',
-            title: 'Description',
-            type: 'array',
-            of: [{ type: 'block' }]
-        },
-        {
             name: 'shortDescription',
             title: 'Short Description',
+            type: 'text'
+        },
+        {
+            name: 'description',
+            title: 'Description',
             type: 'array',
             of: [{ type: 'block' }]
         },
