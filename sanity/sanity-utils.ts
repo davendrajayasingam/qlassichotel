@@ -10,7 +10,8 @@ export async function getSEO(slug: string): Promise<SEO>
         groq`*[_type == "seo" && slug.current == $slug][0]{
             title,
             description,
-            keywords
+            keywords,
+            "ogImage": ogImage.asset->url
         }`,
         { slug }
     )

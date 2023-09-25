@@ -9,6 +9,11 @@ const metadata = {
             type: 'slug'
         },
         {
+            name: 'ogImage',
+            title: 'Social Media Sharing Image',
+            type: 'image'
+        },
+        {
             name: 'title',
             title: 'Title',
             type: 'string'
