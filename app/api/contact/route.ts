@@ -8,7 +8,7 @@ export async function POST(req: NextRequest)
     await Promise.all([
         // send to management
         sendEmail({
-            to: ['hello@davendra.me'],
+            to: ['info@qlassichotel.com'],
             replyTo: [email],
             subject: `QlassicHotel.com | New Message from ${name}`,
             text: message,
