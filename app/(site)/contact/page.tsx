@@ -82,21 +82,16 @@ export default async function ContactPage()
 
       </MediumContainer>
 
-      {/* Container */}
-      <div className='px-4 py-16 max-w-screen-md mx-auto space-y-16'>
-
-        {/* Contact Form */}
-        <div>
-          <h1 className='font-title font-bold text-5xl text-stone-900 leading-snug'>
-            {contact.contactFormTitle}
-          </h1>
-          <p className='mt-6 font-light text-stone-800 whitespace-pre-wrap leading-relaxed'>
-            {contact.contactFormDescription}
-          </p>
-          <ContactForm />
-        </div>
-
-      </div>
+      {/* Contact Form */}
+      <MediumContainer>
+        <h1 className='font-title font-bold text-5xl text-stone-900 leading-snug'>
+          {contact.contactFormTitle}
+        </h1>
+        <p className='mt-6 font-light text-stone-800 whitespace-pre-wrap leading-relaxed'>
+          {contact.contactFormDescription}
+        </p>
+        <ContactForm />
+      </MediumContainer>
 
       <GoogleMaps address={contact.address} />
 
