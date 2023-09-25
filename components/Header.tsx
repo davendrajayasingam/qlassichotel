@@ -5,6 +5,7 @@ import { FaPhone, FaRegEnvelope } from 'react-icons/fa6'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 import { classNames } from '@/utils/tailwindHelper'
 
@@ -22,6 +23,8 @@ export default function Header({ title, tagline, email, phone, nav }: Props)
 
     const showMobileMenuRef = useRef(false)
     const [showMobileMenu, setShowMobileMenu] = useState(false)
+
+    const pathname = usePathname()
 
     useEffect(() =>
     {
@@ -49,6 +52,36 @@ export default function Header({ title, tagline, email, phone, nav }: Props)
             }
         })
     }, [])
+
+    const QuickLink = ({ href, children }: { href: string, children: React.ReactNode }) => (
+        <a
+            href={href}
+            className='custom-underline-hover-animation flex items-center space-x-1 py-1 text-stone-400'
+        >
+            {children}
+        </a>
+    )
+
+    const NavLink = ({ href, children }: { href: string, children: React.ReactNode }) => (
+        <Link
+            href={href}
+            className={classNames(
+                pathname.startsWith(href) ? 'text-amber-400' : 'text-stone-200',
+                'hidden lg:block custom-underline-hover-animation font-title font-semibold text-base text-center hover:text-amber-400 transition-all duration-500 ease-in-out',
+            )}
+        >
+            {children}
+        </Link>
+    )
+
+    const HomepageLink = ({ href, children }: { href: string, children: React.ReactNode }) => (
+        <Link
+            href={href}
+            className='lg:px-12 font-title font-bold text-center text-stone-200 hover:text-amber-400 transition-all duration-500 ease-in-out'
+        >
+            {children}
+        </Link>
+    )
 
     return <div>
         <header
@@ -134,7 +167,10 @@ export default function Header({ title, tagline, email, phone, nav }: Props)
                         .map(navItem => <Link
                             key={navItem.title}
                             href={navItem.link}
-                            className='block py-6 text-lg w-full text-center text-stone-200'
+                            className={classNames(
+                                pathname.startsWith(navItem.link) ? 'text-amber-400' : 'text-stone-200',
+                                'block py-6 text-lg w-full text-center',
+                            )}
                         >
                             {navItem.title}
                         </Link>)
@@ -143,30 +179,3 @@ export default function Header({ title, tagline, email, phone, nav }: Props)
         </div>
     </div>
 }
-
-const QuickLink = ({ href, children }: { href: string, children: React.ReactNode }) => (
-    <a
-        href={href}
-        className='custom-underline-hover-animation flex items-center space-x-1 py-1 text-stone-400'
-    >
-        {children}
-    </a>
-)
-
-const NavLink = ({ href, children }: { href: string, children: React.ReactNode }) => (
-    <Link
-        href={href}
-        className='hidden lg:block custom-underline-hover-animation font-title font-semibold text-base text-center text-stone-200 hover:text-amber-400 transition-all duration-500 ease-in-out'
-    >
-        {children}
-    </Link>
-)
-
-const HomepageLink = ({ href, children }: { href: string, children: React.ReactNode }) => (
-    <Link
-        href={href}
-        className='lg:px-12 font-title font-bold text-center text-stone-200 hover:text-amber-400 transition-all duration-500 ease-in-out'
-    >
-        {children}
-    </Link>
-)
