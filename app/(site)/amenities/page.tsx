@@ -7,14 +7,14 @@ import Text from '@/app/(ui)/Text'
 import Title from '@/app/(ui)/Title'
 
 import type { Metadata } from 'next'
-export async function generateMetadata()
+export async function generateMetadata(): Promise<Metadata>
 {
     const seo = await getSEO('amenities')
     return {
         title: seo.title,
         description: seo.description,
         keywords: seo.keywords
-    } as Metadata
+    }
 }
 
 export const revalidate = 0

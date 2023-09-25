@@ -8,7 +8,7 @@ export async function getSEO(slug: string): Promise<SEO>
 {
     return createClient(config).fetch(
         groq`*[_type == "seo" && slug.current == $slug][0]{
-            siteName,
+            title,
             description,
             keywords
         }`,

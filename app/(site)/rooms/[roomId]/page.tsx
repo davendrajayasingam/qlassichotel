@@ -1,19 +1,19 @@
 import { getRoom } from '@/sanity/sanity-utils'
+import RoomView from '@/app/(site)/rooms/[roomId]/RoomView'
 
 type Props = {
     params: { roomId: string }
 }
 
 import type { Metadata } from 'next'
-import RoomView from '@/app/(site)/rooms/[roomId]/RoomView'
-export async function generateMetadata({ params: { roomId } }: Props)
+export async function generateMetadata({ params: { roomId } }: Props): Promise<Metadata>
 {
     const room = await getRoom(roomId)
     return {
         title: room.name,
         description: room.shortDescription,
         keywords: [room.slug]
-    } as Metadata
+    }
 }
 
 export const revalidate = 0

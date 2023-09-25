@@ -4,17 +4,17 @@ import OurRooms from '@/components/homepage/rooms/OurRooms'
 import Amenities from '@/components/homepage/Amenities'
 import Slides from '@/components/homepage/Slides'
 import Contact from '@/components/homepage/Contact'
+import GoogleMaps from '@/components/homepage/GoogleMaps'
 
 import type { Metadata } from 'next'
-import GoogleMaps from '@/components/homepage/GoogleMaps'
-export async function generateMetadata()
+export async function generateMetadata(): Promise<Metadata>
 {
   const seo = await getSEO('homepage')
   return {
     title: seo.title,
     description: seo.description,
     keywords: seo.keywords
-  } as Metadata
+  }
 }
 
 export const revalidate = 0
