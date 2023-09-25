@@ -53,6 +53,12 @@ export default function Header({ title, tagline, email, phone, nav }: Props)
         })
     }, [])
 
+    // close the mobile menu when the pathname changes
+    useEffect(() =>
+    {
+        setShowMobileMenu(false)
+    }, [pathname])
+
     const QuickLink = ({ href, children }: { href: string, children: React.ReactNode }) => (
         <a
             href={href}
